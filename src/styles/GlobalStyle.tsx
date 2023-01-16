@@ -4,8 +4,9 @@ const GlobalStyle = createGlobalStyle`
   html,
   body {
     height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-weight: 400;
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
@@ -23,9 +24,11 @@ const GlobalStyle = createGlobalStyle`
     font: inherit;
     color: inherit;
     -webkit-overflow-scrolling: touch;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
-  *,
   :after,
   :before {
     -webkit-box-sizing: border-box;

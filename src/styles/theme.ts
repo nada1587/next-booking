@@ -31,6 +31,12 @@ const viewSizes = {
   mobile: 374,
 };
 
+// Fonts
+const font = {
+  kr: 'Noto Sans KR',
+  en: 'Sofia Sans',
+};
+
 // Colors
 const color = {
   mark: '#5E9FF8', // 파랑색
@@ -134,6 +140,7 @@ const imgBox = {
 export const theme: DefaultTheme = {
   lightTheme,
   darkTheme,
+  font,
   mobile,
   viewSizes,
   color,

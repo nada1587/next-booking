@@ -4,6 +4,7 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     lightTheme: LightThemeTypes;
     darkTheme: DarkThemeTypes;
+    font: FontTypes;
     mobile: MobileTypes;
     viewSizes: ViewSizesTypes;
     color: ColorTypes;
