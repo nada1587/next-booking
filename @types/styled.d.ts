@@ -1,11 +1,15 @@
-import "styled-components";
+import 'styled-components';
 
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme {
-    bgColor: string;
-    menuColor: string;
-    textColor: string;
-    shadowColor: string;
-    name: string;
+    lightTheme: LightThemeTypes;
+    darkTheme: DarkThemeTypes;
+    mobile: MobileTypes;
+    viewSizes: ViewSizesTypes;
+    color: ColorTypes;
+    flexBox: FlexBoxTypes;
+    fontFamily: FontFamilyTypes;
+    textOverflow: TextOverflowTypes;
+    imgBox: ImgBoxTypes;
   }
 }
