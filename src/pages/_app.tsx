@@ -4,7 +4,7 @@ import { theme } from 'src/styles/theme';
 import GlobalStyle from 'src/styles/GlobalStyle';
 import { Head } from 'src/components/common/Head';
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -16,3 +16,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+export default App;
