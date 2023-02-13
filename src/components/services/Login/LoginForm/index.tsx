@@ -10,13 +10,7 @@ interface HookFormTypes {
 }
 
 function LoginForm() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-    control,
-  } = useForm<HookFormTypes>({
+  const { register, handleSubmit, control } = useForm<HookFormTypes>({
     defaultValues: {
       email: '',
       password: '',
