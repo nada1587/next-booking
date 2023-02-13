@@ -19,7 +19,7 @@ export default {
   },
 } as ComponentMeta<typeof IconButton>;
 
-const Template: ComponentStory<typeof IconButton> = (args) => (
+const Template: ComponentStory<typeof IconButton> = (args: any) => (
   <IconButton {...args}>
     <SVG name={args.children} width={24} height={24} viewBox="0 0 24 24" />
   </IconButton>

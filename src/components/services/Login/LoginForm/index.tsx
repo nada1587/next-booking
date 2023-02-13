@@ -1,9 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import TextField from '@components/atoms/TextField';
 
 interface HookFormTypes {
   email: string;
   password: string;
+  gender: string;
+  name: string;
 }
 
 function LoginForm() {
@@ -12,49 +15,72 @@ function LoginForm() {
     handleSubmit,
     watch,
     formState: { errors },
+    control,
   } = useForm<HookFormTypes>({
     defaultValues: {
       email: '',
       password: '',
+      gender: '',
+      name: '',
     },
+    // mode: 'onChange',
   });
 
-  console.log(watch());
+  const onSubmit = (data: HookFormTypes) => {
+    console.log('data', data);
+  };
+
+  // console.log(watch());
 
   return (
     <>
       <p>Login</p>
-      <form
-        onSubmit={handleSubmit((data) => {
-          alert(JSON.stringify(data));
-        })}
-      >
-        <label htmlFor="email">email</label>
-        <input
-          type="text"
-          placeholder="email"
-          {...register('email', {
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <TextField
+          label="이메일"
+          control={control}
+          name="email"
+          rules={{
             validate: {
               noNada: (value) =>
                 !value.includes('nada') || 'nada is not allowed',
             },
-          })}
-          defaultValue="test"
+          }}
         />
-        {errors.email && <p>{errors.email.message}</p>}
-        <label htmlFor="password">password</label>
-        <input
+        <TextField
           type="password"
-          placeholder="password"
-          {...register('password', {
+          label="비밀번호"
+          control={control}
+          name="password"
+          rules={{
             required: true,
             minLength: {
               value: 8,
               message: '8글자 이상',
             },
-          })}
+          }}
         />
-        {errors.password && <p>{errors.password.message}</p>}
+        <TextField
+          label="이름"
+          control={control}
+          name="name"
+          width="50%"
+          rules={{
+            required: true,
+            minLength: {
+              value: 3,
+              message: '3글자 이상',
+            },
+          }}
+        />
+
+        <label htmlFor="gender">gender</label>
+        <select {...register('gender')}>
+          <option value="female">female</option>
+          <option value="male">male</option>
+          <option value="other">other</option>
+        </select>
+
         <input type="submit" value="login" />
       </form>
     </>

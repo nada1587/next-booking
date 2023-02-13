@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   plusCounter,
@@ -19,6 +19,7 @@ interface IserverSideData {
 }
 
 function Home({ id }: IserverSideData) {
+  const [initialState, setInitialState] = useState(0);
   const { openModal, ModalPortal } = useModal();
 
   const dispatch = useDispatch();
@@ -42,19 +43,28 @@ function Home({ id }: IserverSideData) {
   return (
     <>
       <Container>
-        <p>인류 페이지 테스트</p>
+        <p>페이지 글로벌 css 설정 확인 및 폰트 테스트</p>
         <p style={{ fontFamily: 'Sofia Sans' }}>Whereas recognition</p>
-        <IconButton onClick={openModal}>
+        <br />
+        <br />
+        <IconButton
+          label="modal 오픈 및 form 테스트"
+          withText
+          onClick={openModal}
+        >
           <SVG name="notice" width={24} height={24} viewBox="0 0 24 24" />
         </IconButton>
-
+        <br />
+        <br />
         <p>store 테스트</p>
-
         <button onClick={minus}>-</button>
         <span>{value}</span>
         <button onClick={plus}>+</button>
-
+        <br />
         <p>Serverside Props : {id}</p>
+        <br />
+        <br />
+        <p>state : {initialState}</p>
       </Container>
 
       <ModalPortal>
@@ -65,7 +75,7 @@ function Home({ id }: IserverSideData) {
 }
 
 export const getServerSideProps: GetServerSideProps =
-  wrapper.getServerSideProps((store) => async (context) => {
+  wrapper.getServerSideProps((store) => async () => {
     store.dispatch(
       setCounter({
         value: 5,
@@ -73,6 +83,7 @@ export const getServerSideProps: GetServerSideProps =
       }),
     );
     store.dispatch(plusCounter());
+
     const result: IserverSideData = { id: 25 };
     return { props: result };
   });
